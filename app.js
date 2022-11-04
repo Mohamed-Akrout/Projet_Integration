@@ -1,15 +1,22 @@
 const express= require('express');
 const app=express();
-const mongoose = require('mongoose');
-const Annonce = require('./models/annonce');
+
+const Annonce = require('./src/models/annonce');
+const connect = require ('./src/services/mongoose');
+
 app.use(express.json());
 
-//connexion Mongoose
-mongoose.connect('mongodb+srv://mohamedakrout:20540601mot@cluster0.joo2wsy.mongodb.net/?retryWrites=true&w=majority',
-  { useNewUrlParser: true,
-    useUnifiedTopology: true })
-  .then(() => console.log('Connexion à MongoDB réussie !'))
-  .catch(() => console.log('Connexion à MongoDB échouée !'));
+
+
+
+
+
+
+
+
+
+
+
 
 //SAVE table in MongoDB
     app.post('/annonce1', async (req, res) =>{
@@ -21,8 +28,8 @@ mongoose.connect('mongodb+srv://mohamedakrout:20540601mot@cluster0.joo2wsy.mongo
           discription: req.body.discription,
           motcles: req.body.motcles,
         });
-        const val=await data.save()
-          res.send("posted");
+        const saveData = await data.save()
+          res.send(saveData);
       });
 
 
