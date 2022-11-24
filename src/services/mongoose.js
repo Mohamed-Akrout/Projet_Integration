@@ -1,10 +1,14 @@
 const mongoose = require('mongoose');
 
-
-//connexion Mongoose
+//connexion data
 mongoose.connect('mongodb+srv://mohamedakrout:20540601mot@cluster0.joo2wsy.mongodb.net/?retryWrites=true&w=majority',
   { useNewUrlParser: true,
     useUnifiedTopology: true })
-  .then(() => console.log('Connexion à MongoDB réussie !'))
-  .catch(() => console.log('Connexion à MongoDB échouée !'));
-
+    mongoose.connection.once('open',()=>{
+      console.log('connexion reussite !');
+    }).on('error',()=>{
+      console.log('connection échouée !');
+    })
+    
+    
+ module.exports=mongoose
